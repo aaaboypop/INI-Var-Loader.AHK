@@ -1,6 +1,9 @@
 LoadSetting(SettingPath){
-	global Setting
+	global _Setting
+	_Setting := LoadSettingALT(SettingPath)
+}
 
+LoadSettingALT(SettingPath){
 	If !(FileExist(SettingPath)){
 	DefaultSetting =
 	(
@@ -32,14 +35,19 @@ TestKey=vale
 			Setting[FnName]._List.Push(KEY)
 		}
 	}	
+	Return Setting
 }
 
 GetSetting(FnName){
-	global Setting
+	global _Setting
 
+	Return GetSettingALT(_Setting, FnName)
+}
+
+GetSettingALT(Var, FnName){
 	out := {}
-	for i,v in Setting[FnName]._List{
-		out[v] := Setting[FnName][v]
+	for i,v in Var[FnName]._List{
+		out[v] := Var[FnName][v]
 	}
 	Return out
 }
