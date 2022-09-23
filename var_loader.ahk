@@ -25,7 +25,7 @@ TestKey=vale
 				}
 				Continue
 			}
-			If RegExMatch(A_LoopField, "O)^(.*)=(.*)$" , ObjMatch)
+			If RegExMatch(A_LoopField, "O)^(\w+)=(.*)$" , ObjMatch)
 			{
 				KEY := ObjMatch.Value(1)
 				Value := ObjMatch.Value(2)
